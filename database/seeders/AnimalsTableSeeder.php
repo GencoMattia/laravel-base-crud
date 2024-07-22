@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Functions\Helpers;
 use App\Models\Animal;
 use Exception;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,8 +17,7 @@ class AnimalsTableSeeder extends Seeder
     public function run(): void
     {
         //
-        $animals = $this->getCsvInfo(__DIR__ . "/fantastic-animal.csv");
-        var_dump($animals);
+        $animals = Helpers::getCsvInfo(__DIR__ . "/../../resources/assets/fantastic-animal.csv");
 
         foreach ($animals as $index => $animal) {
             if ($index > 0) {
@@ -32,21 +32,4 @@ class AnimalsTableSeeder extends Seeder
         }
     }
 
-    static function getCsvInfo($filePath){
-        $csvData = [];
-
-        $fileData = fopen($filePath,"r");
-
-        if ($fileData === false) {
-            throw new InvalidArgumentException("File not found");
-        }
-
-        while ( ( $csvRow = fgetcsv($fileData) ) !== false ) {
-            $csvData[] = $csvRow;
-        }
-
-        fclose($fileData);
-
-        return $csvData;
-    }
 }
