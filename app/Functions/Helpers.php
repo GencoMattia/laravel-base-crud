@@ -2,6 +2,8 @@
 
 namespace App\Functions;
 
+use InvalidArgumentException;
+
 class Helpers {
 
     static function getCsvInfo($filePath){
