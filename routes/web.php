@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\IndexController as GuestIndexController;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get("/", [HomePageController::class, "home"])->name("home");
+
+route::get("/index", [GuestIndexController::class, "index"])->name("guest.index");
