@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 route::get("/", [HomePageController::class, "home"])->name("home");
 
-route::get("/animals", [GuestIndexController::class, "index"])->name("guest.index");
+route::get("/index", [GuestIndexController::class, "index"])->name("guest.index");
 
 route::get("/index", [AnimalController::class, "index"])->name("admin.animals.index");
 
