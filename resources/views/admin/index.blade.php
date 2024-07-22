@@ -13,6 +13,9 @@
                         <h5 class="card-title">
                             {{ $animal->name }}
                         </h5>
+                        <a href="{{ route("admin.animals.show", $animal->id) }}" class="btn btn-primary">
+                            Vedi dettagli
+                        </a>
                     </div>
                 </div>
                 @endforeach
