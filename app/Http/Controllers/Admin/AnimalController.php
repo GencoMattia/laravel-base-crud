@@ -33,7 +33,19 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->all();
+        $data = $request->all();
+
+        $newAnimal = Animal::create($data);
+
+        // $newAnimal->name = $data["name"];
+        // $newAnimal->description = $data["description"];
+        // $newAnimal->origin = $data["origin"];
+        // $newAnimal->img_url = $data["img_url"];
+        // $newAnimal->additional_info = $data["additional_info"];
+        // $newAnimal->save();
+
+
+        return redirect()->route("admin.animals.show", $newAnimal);
     }
 
     /**
