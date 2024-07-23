@@ -25,7 +25,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.animal.create");
     }
 
     /**
