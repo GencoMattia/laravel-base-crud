@@ -25,7 +25,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view("admin.animal.create");
+        return view("admin.create");
     }
 
     /**
@@ -33,7 +33,7 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->all();
     }
 
     /**

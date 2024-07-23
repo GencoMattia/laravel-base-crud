@@ -22,4 +22,8 @@ route::get("/index", [GuestIndexController::class, "index"])->name("guest.index"
 
 route::get("/index", [AnimalController::class, "index"])->name("admin.animals.index");
 
+route::get("/index/create", [AnimalController::class, "create"])->name("admin.animal.create");
+
+route::post("/index", [AnimalController::class, "store"])->name("admin.animal.store");
+
 route::get("/index/{id}", [AnimalController::class, "show"])->name("admin.animals.show");
