@@ -6,6 +6,11 @@
     <main>
         <div class="container">
             <section class="row">
+                @if (session("message"))
+                    <div class="alert alert-success">
+                        {{ session("message") }}
+                    </div>
+                @endif
                 <div class="card p-0" style="width: 18rem;">
                     <img src="{{ $animal->img_url }}" class="card-img-top" alt="{{ $animal->name }} img">
                     <div class="card-body">

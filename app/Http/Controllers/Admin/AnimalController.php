@@ -83,7 +83,7 @@ class AnimalController extends Controller
         $animal->additional_info = $data["additional_info"];
         $animal->update();
 
-        return redirect()->route("admin.animals.show", $animal);
+        return redirect()->route("admin.animals.show", $animal)->with("message", $animal->name . " è stato modificato con successo");
     }
 
     /**
@@ -92,6 +92,6 @@ class AnimalController extends Controller
     public function destroy(Animal $animal)
     {
         $animal->delete();
-        return redirect()->route("admin.animals.index");
+        return redirect()->route("admin.animals.index")->with("message", $animal->name . " è stato cancellato con successo");;
     }
 }

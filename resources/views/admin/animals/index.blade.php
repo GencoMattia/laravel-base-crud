@@ -5,6 +5,11 @@
 @section("main-content")
     <main>
         <div class="container">
+            @if (session("message"))
+                <div class="alert alert-success">
+                    {{ session("message") }}
+                </div>
+            @endif
             <section class="row">
                 @foreach ( $animals as $animal )
                 <div class="card p-0 text-center" style="width: 18rem;">
