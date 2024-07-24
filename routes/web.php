@@ -31,3 +31,5 @@ route::get("/admin/animals/index/{animal}", [AnimalController::class, "show"])->
 route::get("/admin/animals/index/{animal}/edit", [AnimalController::class, "edit"])->name("admin.animals.edit");
 
 route::put("/admin/animals/index/{animal}", [AnimalController::class, "update"])->name("admin.animals.update");
+
+route::delete("/admin/animals/index/{animal}", [AnimalController::class, "destroy"])->name("admin.animals.destroy");

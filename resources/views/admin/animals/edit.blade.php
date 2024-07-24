@@ -8,7 +8,7 @@
             <h1 class="mb-4">
                 Modifica {{ $animal->name }}
             </h1>
-            <form class="row g-3" action="{{ route('admin.animals.update', $animal) }}" method="POST">
+            <form class="row g-3 edit-animal" action="{{ route('admin.animals.update', $animal) }}" method="POST">
                 @csrf
                 @method("PUT")
 

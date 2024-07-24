@@ -13,12 +13,20 @@
                         <h5 class="card-title">
                             {{ $animal->name }}
                         </h5>
-                        <a href="{{ route("admin.animals.show", $animal->id) }}" class="btn btn-primary">
+                        <a href="{{ route("admin.animals.show", $animal) }}" class="btn btn-primary">
                             Vedi dettagli
                         </a>
-                        <a href="{{ route("admin.animals.edit", $animal->id) }}" class="btn btn-success">
+                        <a href="{{ route("admin.animals.edit", $animal) }}" class="btn btn-success">
                             Modifica
                         </a>
+                        <form action="{{ route("admin.animals.destroy", $animal) }}" class="animal-delete d-inline-block" method="POST">
+                            @csrf
+                            @method("DELETE")
+
+                            <button type="submit" class="btn btn-danger">
+                                Elimina
+                            </button>
+                        </form>
                     </div>
                 </div>
                 @endforeach
@@ -26,4 +34,8 @@
         </div>
         @dump($animals)
     </main>
+@endsection
+
+@section("custom-script")
+    @vite("resources/js/delete-confirm.js")
 @endsection
