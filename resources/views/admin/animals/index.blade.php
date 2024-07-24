@@ -32,7 +32,6 @@
                 @endforeach
             </section>
         </div>
-        @dump($animals)
     </main>
 @endsection
 
