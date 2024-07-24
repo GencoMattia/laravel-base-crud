@@ -24,6 +24,9 @@
                             {{ $animal->additional_info }}
                         </li>
                     </ul>
+                    <a href="{{ route("admin.animals.index") }}" class="btn btn-primary">
+                        Torna all'indice
+                    </a>
                 </div>
             </section>
         </div>

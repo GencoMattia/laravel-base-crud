@@ -6,7 +6,7 @@
     <main>
         <div class="container mt-5">
             <h1 class="mb-4">Creare un nuovo animale</h1>
-            <form class="row g-3" action="{{ route('admin.animal.store') }}" method="POST">
+            <form class="row g-3" action="{{ route('admin.animals.store') }}" method="POST">
 
                 @csrf
 

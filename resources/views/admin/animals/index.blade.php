@@ -16,6 +16,9 @@
                         <a href="{{ route("admin.animals.show", $animal->id) }}" class="btn btn-primary">
                             Vedi dettagli
                         </a>
+                        <a href="{{ route("admin.animals.edit", $animal->id) }}" class="btn btn-success">
+                            Modifica
+                        </a>
                     </div>
                 </div>
                 @endforeach
