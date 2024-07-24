@@ -18,12 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 route::get("/", [HomePageController::class, "home"])->name("home");
 
-route::get("/index", [GuestIndexController::class, "index"])->name("guest.index");
+route::get("/guest/animals/index", [GuestIndexController::class, "index"])->name("guest.animals.index");
 
-route::get("/index", [AnimalController::class, "index"])->name("admin.animals.index");
+route::get("/admin/animals/index", [AnimalController::class, "index"])->name("admin.animals.index");
 
-route::get("/index/create", [AnimalController::class, "create"])->name("admin.animal.create");
+route::get("/admin/animals/create", [AnimalController::class, "create"])->name("admin.animals.create");
 
-route::post("/index", [AnimalController::class, "store"])->name("admin.animal.store");
+route::post("/admin/animals/index", [AnimalController::class, "store"])->name("admin.animals.store");
 
-route::get("/index/{id}", [AnimalController::class, "show"])->name("admin.animals.show");
+route::get("/admin/animals/index/{id}", [AnimalController::class, "show"])->name("admin.animals.show");
+
+route::get("/admin/animals/index/{id}/edit", [AnimalController::class, "edit"])->name("admin.animals.edit");
+
+route::put("/admin/animals/index/{id}", [AnimalController::class, "update"])->name("admin.animals.update");

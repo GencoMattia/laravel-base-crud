@@ -17,7 +17,7 @@ class AnimalController extends Controller
 
         $animals = Animal::all();
 
-        return view("admin.index", compact("animals"));
+        return view("admin.animals.index", compact("animals"));
     }
 
     /**
@@ -25,7 +25,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view("admin.create");
+        return view("admin.animals.create");
     }
 
     /**
@@ -35,14 +35,15 @@ class AnimalController extends Controller
     {
         $data = $request->all();
 
-        $newAnimal = Animal::create($data);
+        // $newAnimal = Animal::create($data);
 
-        // $newAnimal->name = $data["name"];
-        // $newAnimal->description = $data["description"];
-        // $newAnimal->origin = $data["origin"];
-        // $newAnimal->img_url = $data["img_url"];
-        // $newAnimal->additional_info = $data["additional_info"];
-        // $newAnimal->save();
+        $newAnimal = new Animal();
+        $newAnimal->name = $data["name"];
+        $newAnimal->description = $data["description"];
+        $newAnimal->origin = $data["origin"];
+        $newAnimal->img_url = $data["img_url"];
+        $newAnimal->additional_info = $data["additional_info"];
+        $newAnimal->save();
 
 
         return redirect()->route("admin.animals.show", $newAnimal);
@@ -51,24 +52,24 @@ class AnimalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Animal $animal)
     {
-        $animal = Animal::findOrFail($id);
-        return view("admin.show", compact("animal"));
+        // $animal = Animal::findOrFail($id);
+        return view("admin.animals.show", compact("animal"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Animal $animal)
     {
-        //
+        return view("admin.animals.edit", compact("animal"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Animal $animal)
     {
         //
     }
@@ -76,7 +77,7 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Animal $animal)
     {
         //
     }
