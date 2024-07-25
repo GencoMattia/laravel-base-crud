@@ -1,6 +1,6 @@
 @extends("layout.app")
 
-@section("page-title", "Animals Index")
+@section("page-title", "Deleted Animals Index")
 
 @section("main-content")
     <main>
@@ -18,18 +18,20 @@
                         <h5 class="card-title">
                             {{ $animal->name }}
                         </h5>
-                        <a href="{{ route("admin.animals.show", $animal) }}" class="btn btn-primary">
-                            Vedi dettagli
-                        </a>
-                        <a href="{{ route("admin.animals.edit", $animal) }}" class="btn btn-success">
-                            Modifica
-                        </a>
-                        <form action="{{ route("admin.animals.destroy", $animal) }}" class="animal-delete d-inline-block" method="POST" data-animal-id="{{ $animal->id }}" data-animal-name="{{ $animal->name }}">
+                        <form action="{{ route("admin.animals.restore", $animal) }}" class="d-inline-block" method="POST" data-animal-id="{{ $animal->id }}" data-animal-name="{{ $animal->name }}">
+                            @csrf
+                            @method("PATCH")
+
+                            <button type="submit" class="btn btn-warning">
+                                Ripristina
+                            </button>
+                        </form>
+                        <form action="{{ route("admin.animals.permanentDelete", $animal) }}" class="animal-delete d-inline-block" method="POST" data-animal-id="{{ $animal->id }}" data-animal-name="{{ $animal->name }}">
                             @csrf
                             @method("DELETE")
 
                             <button type="submit" class="btn btn-danger">
-                                Elimina
+                                Rimuovi
                             </button>
                         </form>
                     </div>

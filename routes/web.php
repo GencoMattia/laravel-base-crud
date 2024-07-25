@@ -35,3 +35,7 @@ route::get("/admin/animals/index/{animal}/edit", [AnimalController::class, "edit
 route::put("/admin/animals/index/{animal}", [AnimalController::class, "update"])->name("admin.animals.update");
 
 route::delete("/admin/animals/index/{animal}", [AnimalController::class, "destroy"])->name("admin.animals.destroy");
+
+route::patch("/admin/animals/index/{animal}/restore", [AnimalController::class, "restore"])->name("admin.animals.restore");
+
+route::delete("/admin/animals/index/{animal}/permanent-delete", [AnimalController::class, "permanentDelete"])->name("admin.animals.permanentDelete");

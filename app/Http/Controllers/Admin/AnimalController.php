@@ -101,4 +101,18 @@ class AnimalController extends Controller
 
         return view("admin.animals.deletedIndex", compact("animals"));
     }
+
+    public function restore(string $id){
+        $animal = Animal::onlyTrashed()->findOrFail($id);
+        $animal->restore();
+
+        return redirect()->route("animals.deletedIndex")->with("message", $animal->name . " è stato ripristinato con successo");
+    }
+
+    public function permanentDelete(string $id){
+        $animal = Animal::onlyTrashed()->findOrFail($id);
+        $animal->forceDelete();
+
+        return redirect()->route("animals.deletedIndex")->with("message", $animal->name . " è stato rimosso con successo");
+    }
 }
