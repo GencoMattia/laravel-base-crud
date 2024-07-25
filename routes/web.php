@@ -26,6 +26,8 @@ route::get("/admin/animals/create", [AnimalController::class, "create"])->name("
 
 route::post("/admin/animals/index", [AnimalController::class, "store"])->name("admin.animals.store");
 
+route::get("/admin/animals/deleted", [AnimalController::class, "deletedIndex"])->name("animals.deletedIndex");
+
 route::get("/admin/animals/index/{animal}", [AnimalController::class, "show"])->name("admin.animals.show");
 
 route::get("/admin/animals/index/{animal}/edit", [AnimalController::class, "edit"])->name("admin.animals.edit");
