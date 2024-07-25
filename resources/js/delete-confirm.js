@@ -4,7 +4,10 @@ deleteForms.forEach((deleteFormElement) => {
     deleteFormElement.addEventListener("submit", function(event){
         event.preventDefault();
 
-        if(window.confirm("Vuoi davvero cancellare questo animale?") === true) {
+        const name = this.getAttribute("data-animal-name");
+        const animalId = this.getAttribute("data-animal-id");
+
+        if(window.confirm(`Vuoi davvero cancellare l'animale ${name} con id ${animalId}?`) === true) {
             this.submit();
         }
     });

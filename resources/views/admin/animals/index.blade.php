@@ -24,7 +24,7 @@
                         <a href="{{ route("admin.animals.edit", $animal) }}" class="btn btn-success">
                             Modifica
                         </a>
-                        <form action="{{ route("admin.animals.destroy", $animal) }}" class="animal-delete d-inline-block" method="POST">
+                        <form action="{{ route("admin.animals.destroy", $animal) }}" class="animal-delete d-inline-block" method="POST" data-animal-id="{{ $animal->id }}" data-animal-name="{{ $animal->name }}">
                             @csrf
                             @method("DELETE")
 
