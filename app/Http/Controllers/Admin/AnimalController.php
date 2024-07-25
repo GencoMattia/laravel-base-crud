@@ -33,7 +33,13 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            "name" => "required|unique:animals|min:3|max:25",
+            "description" => "required|max:65535|nullable",
+            "origin" => "required|min:3|max:50",
+            "img_url" => "required|url|max:65535|nullable",
+            "additional_info" => "required|max:65535|nullable"
+        ]);
 
         // $newAnimal = Animal::create($data);
 

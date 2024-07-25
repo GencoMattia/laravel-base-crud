@@ -5,6 +5,17 @@
 @section("main-content")
     <main>
         <div class="container mt-5">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <h1 class="mb-4">Creare un nuovo animale</h1>
             <form class="row g-3" action="{{ route('admin.animals.store') }}" method="POST">
 
