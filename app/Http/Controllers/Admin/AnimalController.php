@@ -3,11 +3,41 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAnimalRequest;
+use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {
+    // Validazione fatta a mano:
+        // $data = $request->validated([
+        //     "name" => "required|min:3|max:25",
+        //     "description" => "required|max:65535|nullable",
+        //     "origin" => "required|min:3|max:50",
+        //     "img_url" => "required|url|max:65535|nullable",
+        //     "additional_info" => "required|max:65535|nullable"
+        // ],
+        // [
+        //     "name.required" => "Il campo nome è obbligatorio.",
+        //     "name.min" => "Il nome deve contenere almeno 3 caratteri.",
+        //     "name.max" => "Il nome non può superare i 25 caratteri.",
+
+        //     "description.required" => "Il campo descrizione è obbligatorio.",
+        //     "description.max" => "La descrizione non può superare i 65535 caratteri.",
+
+        //     "origin.required" => "Il campo origine è obbligatorio.",
+        //     "origin.min" => "L'origine deve contenere almeno 3 caratteri.",
+        //     "origin.max" => "L'origine non può superare i 50 caratteri.",
+
+        //     "img_url.required" => "L'URL dell'immagine è obbligatorio.",
+        //     "img_url.url" => "L'URL dell'immagine non è valido.",
+        //     "img_url.max" => "L'URL dell'immagine non può superare i 65535 caratteri.",
+
+        //     "additional_info.required" => "Il campo informazioni aggiuntive è obbligatorio.",
+        //     "additional_info.max" => "Le informazioni aggiuntive non possono superare i 65535 caratteri.",
+        // ]);
+
     /**
      * Display a listing of the resource.
      */
@@ -31,15 +61,9 @@ class AnimalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAnimalRequest $request)
     {
-        $data = $request->validate([
-            "name" => "required|unique:animals|min:3|max:25",
-            "description" => "required|max:65535|nullable",
-            "origin" => "required|min:3|max:50",
-            "img_url" => "required|url|max:65535|nullable",
-            "additional_info" => "required|max:65535|nullable"
-        ]);
+        $data = $request->validated();
 
         // $newAnimal = Animal::create($data);
 
@@ -76,34 +100,9 @@ class AnimalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Animal $animal)
+    public function update(UpdateAnimalRequest $request, Animal $animal)
     {
-        $data = $request->validate([
-            "name" => "required|min:3|max:25",
-            "description" => "required|max:65535|nullable",
-            "origin" => "required|min:3|max:50",
-            "img_url" => "required|url|max:65535|nullable",
-            "additional_info" => "required|max:65535|nullable"
-        ],
-        [
-            "name.required" => "Il campo nome è obbligatorio.",
-            "name.min" => "Il nome deve contenere almeno 3 caratteri.",
-            "name.max" => "Il nome non può superare i 25 caratteri.",
-
-            "description.required" => "Il campo descrizione è obbligatorio.",
-            "description.max" => "La descrizione non può superare i 65535 caratteri.",
-
-            "origin.required" => "Il campo origine è obbligatorio.",
-            "origin.min" => "L'origine deve contenere almeno 3 caratteri.",
-            "origin.max" => "L'origine non può superare i 50 caratteri.",
-
-            "img_url.required" => "L'URL dell'immagine è obbligatorio.",
-            "img_url.url" => "L'URL dell'immagine non è valido.",
-            "img_url.max" => "L'URL dell'immagine non può superare i 65535 caratteri.",
-
-            "additional_info.required" => "Il campo informazioni aggiuntive è obbligatorio.",
-            "additional_info.max" => "Le informazioni aggiuntive non possono superare i 65535 caratteri.",
-        ]);
+        $data = $request->validated();
 
         // $animal->update($data);
 

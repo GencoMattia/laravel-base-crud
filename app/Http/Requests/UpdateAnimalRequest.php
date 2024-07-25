@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAnimalRequest extends FormRequest
+class UpdateAnimalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreAnimalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|unique|min:3|max:25",
+            "name" => "required|min:3|max:25",
             "description" => "required|max:65535|nullable",
             "origin" => "required|min:3|max:50",
             "img_url" => "required|url|max:65535|nullable",
@@ -34,7 +34,6 @@ class StoreAnimalRequest extends FormRequest
     {
         return [
             "name.required" => "Il campo nome è obbligatorio.",
-            "name.unique" => "Il nome selezionato è già in uso.",
             "name.min" => "Il nome deve contenere almeno 3 caratteri.",
             "name.max" => "Il nome non può superare i 25 caratteri.",
 
